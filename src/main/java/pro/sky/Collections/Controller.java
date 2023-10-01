@@ -12,10 +12,10 @@ public class Controller {
     public String Exception(RuntimeException e) {
         return e.getMessage();
     }
-    EmployeeService employeeService;
+    EmployeeServiceImpl employeeService;
 
 
-    public Controller(EmployeeService employeeService) {
+    public Controller(EmployeeServiceImpl employeeService) {
         this.employeeService = employeeService;
     }
 
