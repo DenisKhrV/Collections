@@ -45,6 +45,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public List<Employee> list() {
-        return employees;
+        return new ArrayList<>(employees);
     }
 }
