@@ -2,6 +2,7 @@ package pro.sky.Collections;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -12,7 +13,7 @@ public class Controller {
     public String Exception(RuntimeException e) {
         return e.getMessage();
     }
-    EmployeeServiceImpl employeeService;
+    private final EmployeeService employeeService;
 
     public Controller(EmployeeServiceImpl employeeService) {
         this.employeeService = employeeService;
