@@ -1,4 +1,4 @@
-package pro.sky.Collections;
+package pro.sky.Collections.model;
 
 import java.util.Objects;
 

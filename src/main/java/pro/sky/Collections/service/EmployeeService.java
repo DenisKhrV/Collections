@@ -1,6 +1,8 @@
-package pro.sky.Collections;
+package pro.sky.Collections.service;
 
-import java.util.List;
+import pro.sky.Collections.model.Employee;
+
+import java.util.Collection;
 
 public interface EmployeeService {
     public Employee addEmployee(String firstName, String lastName);
@@ -9,5 +11,5 @@ public interface EmployeeService {
 
     public Employee findEmployee(String firstName, String lastName);
 
-    public List<Employee> list();
+    public Collection<Employee> getAll();
 }

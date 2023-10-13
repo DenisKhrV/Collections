@@ -1,9 +1,11 @@
-package pro.sky.Collections;
+package pro.sky.Collections.controller;
 
 import org.springframework.web.bind.annotation.*;
+import pro.sky.Collections.model.Employee;
+import pro.sky.Collections.service.EmployeeService;
+import pro.sky.Collections.service.EmployeeServiceImpl;
 
 import java.util.Collection;
-import java.util.List;
 
 
 @RestController
@@ -34,7 +36,7 @@ public class Controller {
         return employeeService.findEmployee(firstName, lastName);
     }
     @GetMapping
-    private List<Employee> list() {
-        return employeeService.list();
+    private Collection<Employee> getAll() {
+        return employeeService.getAll();
     }
 }
