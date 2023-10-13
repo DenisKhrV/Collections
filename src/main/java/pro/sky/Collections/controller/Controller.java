@@ -22,18 +22,18 @@ public class Controller {
     }
 
     @GetMapping(path = "/add")
-    public Employee add(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
-        return employeeService.addEmployee(firstName, lastName);
+    public Employee add(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("patronymic") String patronymic) {
+        return employeeService.addEmployee(firstName, lastName, patronymic);
     }
 
     @GetMapping(path = "/remove")
-    private Employee remove(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
-        return employeeService.removeEmployee(firstName, lastName);
+    private Employee remove(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("patronymic") String patronymic) {
+        return employeeService.removeEmployee(firstName, lastName, patronymic);
     }
 
     @GetMapping(path = "/find")
-    private Employee find(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
-        return employeeService.findEmployee(firstName, lastName);
+    private Employee find(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("patronymic") String patronymic) {
+        return employeeService.findEmployee(firstName, lastName, patronymic);
     }
     @GetMapping
     private Collection<Employee> getAll() {

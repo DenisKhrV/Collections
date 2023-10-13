@@ -1,6 +1,7 @@
 package pro.sky.Collections.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import pro.sky.Collections.exceptions.EmployeeAlreadyAddedException;
 import pro.sky.Collections.exceptions.EmployeeNotFoundException;
 import pro.sky.Collections.exceptions.EmployeeStorageIsFullException;
@@ -13,14 +14,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final Map<String, Employee> employees = new HashMap<>();
     private static final int MAX_POSSIBLE_NUMBER_OF_EMPLOYEES = 5;
 
-    public Employee addEmployee(String firstName, String lastName) {
+    public Employee addEmployee(String firstName, String lastName, String patronymic) {
         if (employees.size() >= MAX_POSSIBLE_NUMBER_OF_EMPLOYEES) {
             throw new EmployeeStorageIsFullException("Превышен лимит количества сотрудников в фирме");
         }
 
-        String key = getKey(firstName, lastName);
+        String key = getKey(firstName, lastName, patronymic);
 
-        Employee employee = new Employee(firstName, lastName);
+        Employee employee = new Employee(firstName, lastName, patronymic);
 
         if (employees.containsKey(key)) {
             throw new EmployeeAlreadyAddedException("Уже есть такой сотрудник");
@@ -29,8 +30,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employee;
     }
 
-    public Employee removeEmployee(String firstName, String lastName) {
-        String key = getKey(firstName, lastName);
+    public Employee removeEmployee(String firstName, String lastName, String patronymic) {
+        String key = getKey(firstName, lastName, patronymic);
         Employee employee = employees.get(key);
         if (!employees.containsKey(key)) {
             throw new EmployeeNotFoundException("Сотрудник не найден");
@@ -40,19 +41,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
 
-    public Employee findEmployee(String firstName, String lastName) {
-        String key = getKey(firstName, lastName);
+    public Employee findEmployee(String firstName, String lastName, String patronymic) {
+        String key = getKey(firstName, lastName, patronymic);
         Employee employee = employees.get(key);
         if (!employees.containsKey(key)) {
             throw new EmployeeNotFoundException("Сотрудник не найден");
         }
         return employee;
     }
+
     public Collection<Employee> getAll() {
         return employees.values();
     }
 
-    private String getKey(String firstName, String lastName) {
-        return firstName + lastName;
+    private String getKey(String firstName, String lastName, String patronymic) {
+        return firstName + lastName + patronymic;
     }
 }
