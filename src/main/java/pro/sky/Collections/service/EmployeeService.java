@@ -5,7 +5,7 @@ import pro.sky.Collections.model.Employee;
 import java.util.Collection;
 
 public interface EmployeeService {
-    public Employee addEmployee(String firstName, String lastName, String patronymic);
+    public Employee addEmployee(String firstName, String lastName, String patronymic, int salary, int department);
 
     public Employee removeEmployee(String firstName, String lastName, String patronymic);
 

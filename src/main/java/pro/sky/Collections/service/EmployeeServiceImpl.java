@@ -14,14 +14,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final Map<String, Employee> employees = new HashMap<>();
     private static final int MAX_POSSIBLE_NUMBER_OF_EMPLOYEES = 5;
 
-    public Employee addEmployee(String firstName, String lastName, String patronymic) {
+    public EmployeeServiceImpl() {
+        addEmployee("Ivan", "Ivanov", "Ivanovich",20000,1);
+        addEmployee("Stepan", "Ivanov", "Stepanovich",30000,4);
+        addEmployee("Petr", "Petrov", "Ivanovich",50000,5);
+    }
+
+    public Employee addEmployee(String firstName, String lastName, String patronymic,int salary, int department) {
         if (employees.size() >= MAX_POSSIBLE_NUMBER_OF_EMPLOYEES) {
             throw new EmployeeStorageIsFullException("Превышен лимит количества сотрудников в фирме");
         }
 
         String key = getKey(firstName, lastName, patronymic);
 
-        Employee employee = new Employee(firstName, lastName, patronymic);
+        Employee employee = new Employee(firstName, lastName, patronymic,salary,department);
 
         if (employees.containsKey(key)) {
             throw new EmployeeAlreadyAddedException("Уже есть такой сотрудник");
@@ -51,7 +57,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public Collection<Employee> getAll() {
-        return employees.values();
+        return Collections.unmodifiableCollection(employees.values());
     }
 
     private String getKey(String firstName, String lastName, String patronymic) {

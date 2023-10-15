@@ -6,7 +6,16 @@ public class Employee {
     private final String firstName;
     private final String lastName;
     private final String patronymic;
+    private int salary;
+    private int department;
 
+    public Employee(String firstName, String lastName, String patronymic, int salary, int department) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.patronymic = patronymic;
+        this.salary = salary;
+        this.department = department;
+    }
 
     public Employee(String firstName, String lastName, String patronymic) {
         this.firstName = firstName;
@@ -25,6 +34,15 @@ public class Employee {
     public String getPatronymic() {
         return patronymic;
     }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public int getDepartment() {
+        return this.department;
+    }
+
 
     @Override
     public boolean equals(Object o) {
