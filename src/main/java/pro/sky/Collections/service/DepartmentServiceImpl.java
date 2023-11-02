@@ -19,21 +19,30 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Employee getEmployeeWithMaxSalary(Integer department) {
-        return employeeService.getAll()
+    public int getMaxSalary(Integer department) {
+        Employee employeeWithMaxSalary = employeeService.getAll()
                 .stream()
                 .filter(employee -> employee.getDepartment() == department)
                 .max(Comparator.comparingInt(Employee::getSalary))
                 .orElseThrow(() -> new EmployeeNotFoundException("Employee not found"));
+        return employeeWithMaxSalary.getSalary();
     }
 
     @Override
-    public Employee getEmployeeWithMinSalary(Integer department) {
+    public int getSumSalary(Integer department) {
         return employeeService.getAll()
+                .stream()
+                .filter(employee -> employee.getDepartment() == department)
+                .mapToInt(Employee::getSalary).sum();
+    }
+    @Override
+    public int getMinSalary(Integer department) {
+        Employee employeeWithMinSalary = employeeService.getAll()
                 .stream()
                 .filter(employee -> employee.getDepartment() == department)
                 .min(Comparator.comparingInt(Employee::getSalary))
                 .orElseThrow(() -> new EmployeeNotFoundException("Employee not found"));
+        return employeeWithMinSalary.getSalary();
     }
 
     @Override

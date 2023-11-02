@@ -15,11 +15,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final Map<String, Employee> employees = new HashMap<>();
     private static final int MAX_POSSIBLE_NUMBER_OF_EMPLOYEES = 5;
 
-    public EmployeeServiceImpl() {
-        addEmployee("Ivan", "Ivanov", "Ivanovich", 20000, 1);
-        addEmployee("Stepan", "Ivanov", "Stepanovich", 30000, 4);
-        addEmployee("Petr", "Petrov", "Ivanovich", 50000, 5);
-    }
+//    public EmployeeServiceImpl() {
+//        addEmployee("Ivan", "Ivanov", "Ivanovich", 20000, 1);
+//        addEmployee("Stepan", "Ivanov", "Stepanovich", 30000, 4);
+//        addEmployee("Petr", "Petrov", "Ivanovich", 50000, 5);
+//        addEmployee("Semen", "Petrov", "Ivanovich", 10000, 5);
+//    }
 
     public Employee addEmployee(String firstName, String lastName, String patronymic, int salary, int department) {
         if (employees.size() >= MAX_POSSIBLE_NUMBER_OF_EMPLOYEES) {
